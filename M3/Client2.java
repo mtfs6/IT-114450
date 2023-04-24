@@ -16,37 +16,34 @@ import java.net.*;
 
 class Client2 {
 
-    public static void main(String args[])
-            throws Exception {
+        public static void main(String args[])
+                        throws Exception {
 
-        Socket s = new Socket("localhost", 888);
+                Socket s = new Socket("localhost", 1234);
 
-        DataOutputStream dos
-                = new DataOutputStream(
-                        s.getOutputStream());
+                DataOutputStream dos = new DataOutputStream(
+                                s.getOutputStream());
 
-        BufferedReader br
-                = new BufferedReader(
-                        new InputStreamReader(
-                                s.getInputStream()));
+                BufferedReader br = new BufferedReader(
+                                new InputStreamReader(
+                                                s.getInputStream()));
 
-        BufferedReader kb
-                = new BufferedReader(
-                        new InputStreamReader(System.in));
-        String str, str1;
-        System.out.println("This Is Client Side \n Send Message");
-        while (!(str = kb.readLine()).equals("exit")) {
+                BufferedReader kb = new BufferedReader(
+                                new InputStreamReader(System.in));
+                String str, str1;
+                System.out.println("This Is Client Side \n Send Message");
+                while (!(str = kb.readLine()).equals("exit")) {
 
-            dos.writeBytes(str + "\n");
+                        dos.writeBytes(str + "\n");
 
-            str1 = br.readLine();
+                        str1 = br.readLine();
 
-            System.out.println(str1);
+                        System.out.println(str1);
+                }
+
+                dos.close();
+                br.close();
+                kb.close();
+                s.close();
         }
-
-        dos.close();
-        br.close();
-        kb.close();
-        s.close();
-    }
 }
